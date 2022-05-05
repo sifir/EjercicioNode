@@ -1,11 +1,10 @@
 let express = require('express');
-let router = express.Router();
-
 let theatersJS = require('../data/theaters.json')
+let router = express.Router();
 
 let listadoString = ''
 theatersJS.theaters.forEach(function(element, index) {
-    listadoString = listadoString + '<br> Nombre: ' + element.name + '<br> Direccion: ' + element.address + '<br> Descripcion: ' + element.description + '<br><br>'
+    listadoString += '<br> Nombre: ' + element.name + '<br> Direccion: ' + element.address + '<br> Descripcion: ' + element.description + '<br><br>'
 });
 
 router.get('/',(req, res) =>{

@@ -1,12 +1,8 @@
 let express = require('express');
+let preguntasJS = require('../data/faqs.json')
 let router = express.Router();
 
-let preguntasJS = require('../data/faqs.json')
-
 let preguntasString = ''
-
-let preguntas = []
-let respuestas = []
 
 preguntasJS.faqs.forEach(function(element, index){
 

@@ -1,9 +1,12 @@
 let express = require ('express')
+let router = require('./router')
+
 let app = express()
 
-app.listen(3000,() => {
-    console.log('Servidor corriendo');
+const port = 3000
+
+app.listen(port ,() => {
+    console.log('Servidor corriendo en el puerto ' + port);
 })
 
-let router = require('./router')
 app.use('/',router)

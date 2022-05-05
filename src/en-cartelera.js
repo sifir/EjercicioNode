@@ -1,11 +1,11 @@
 let express = require('express');
+let moviesJS = require('../data/movies.json')
 let router = express.Router();
 
-let moviesJS = require('../data/movies.json')
 
 let pelisInfo = ''
 moviesJS.movies.forEach(function(element) {
-    pelisInfo = pelisInfo + '<br> Titulo : ' + element.title + ' <br> Reseña: ' + element.overview + '<br><br>'
+    pelisInfo += '<br> Titulo : ' + element.title + ' <br> Reseña: ' + element.overview + '<br><br>'
 })
 
 router.get('/',(req, res) =>{

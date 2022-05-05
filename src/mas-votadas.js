@@ -1,28 +1,24 @@
 let express = require('express');
-let router = express.Router();
-
 let moviesJS = require('../data/movies.json')
+let router = express.Router();
 
 let pelisMasVotadasString = ''
 let pelisPuntaje = []
 let i = 0
 
-moviesJS.movies.forEach(function(element, index){
+moviesJS.movies.forEach(function(element){
     if (element.vote_average >= 7.0) {
-        pelisMasVotadasString = pelisMasVotadasString + 'Titulo: ' + element.title + '<br>' + 'Rating: ' + element.vote_average + '<br>' + 'Rese;a: ' + element.overview + '<br><br>';
+        pelisMasVotadasString += 'Titulo: ' + element.title + '<br>' + 'Rating: ' + element.vote_average + '<br>' + 'Rese;a: ' + element.overview + '<br><br>';
         pelisPuntaje[i] = element.vote_average
         i++
     }
 })
 
-function Average(array) {
-    var i = 0, sum = 0, cantidad = array.length
-    while (i < cantidad){
-        sum = sum + array[i++]
-    }
-    return sum / cantidad;
+let sumaPuntaje = 0
+for (let index = 0; index < pelisPuntaje.length; index++) {
+    sumaPuntaje += pelisPuntaje[index]    
 }
-var pelisAverage = Average(pelisPuntaje)
+let pelisAverage = sumaPuntaje / pelisPuntaje.length
 
 router.get('/',(req, res) =>{
     res.send(
